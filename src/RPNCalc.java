@@ -2,9 +2,9 @@ import java.util.Stack;
 
 public class RPNCalc {
     private String input;//inputs are seperated via spaces
-    private Stack<Integer> stack = new Stack<>();
+    private Stack<Double> stack = new Stack<>();
 
-    public void SetInput(String newInput){
+    public void SetInput(String newInput) {
         input = newInput;
     }
 
@@ -15,19 +15,28 @@ public class RPNCalc {
                 switch (aSplitInput) {
                     case "+":
                         stack.push(stack.pop() + stack.pop());
+                        System.out.println(stack.toString());
                         break;
                     case "-":
-                        stack.push(stack.pop() - stack.pop());
+                        double secondNum = stack.pop();
+                        double firstNum = stack.pop();
+                        stack.push(firstNum - secondNum);
+                        System.out.println(stack.toString());
                         break;
                     case "*":
                         stack.push(stack.pop() * stack.pop());
+                        System.out.println(stack.toString());
                         break;
                     case "/":
-                        stack.push(stack.pop() / stack.pop());
+                        secondNum = stack.pop();
+                        firstNum = stack.pop();
+                        stack.push(firstNum / secondNum);
+                        System.out.println(stack.toString());
                         break;
                     default:
-                        int temp = Integer.parseInt(aSplitInput);
+                        double temp = Integer.parseInt(aSplitInput);
                         stack.push(temp);
+                        System.out.println(stack.toString());
                         break;
                 }
             }
