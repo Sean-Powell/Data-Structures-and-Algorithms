@@ -1,3 +1,5 @@
+import com.sun.org.apache.xpath.internal.SourceTree;
+
 import java.util.Stack;
 
 public class RPNCalc {
@@ -15,21 +17,25 @@ public class RPNCalc {
                 switch (aSplitInput) {
                     case "+":
                         stack.push(stack.pop() + stack.pop());
+                        System.out.println("Addition:");
                         System.out.println(stack.toString());
                         break;
                     case "-":
                         double secondNum = stack.pop();
                         double firstNum = stack.pop();
+                        System.out.println("Subtraction:");
                         stack.push(firstNum - secondNum);
                         System.out.println(stack.toString());
                         break;
                     case "*":
                         stack.push(stack.pop() * stack.pop());
+                        System.out.println("Multiplication:");
                         System.out.println(stack.toString());
                         break;
                     case "/":
                         secondNum = stack.pop();
                         firstNum = stack.pop();
+                        System.out.println("Subtraction:");
                         stack.push(firstNum / secondNum);
                         System.out.println(stack.toString());
                         break;

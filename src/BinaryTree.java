@@ -54,12 +54,12 @@ public class BinaryTree {
         ArrayList<Integer> leftSide = new ArrayList<>();
         ArrayList<Integer> rightSide = new ArrayList<>();
         int j = 0;
-        for(int i = 0; i < list.size(); i++){
-            if(j < halfSize){
-                leftSide.add(list.get(i));
+        for (Integer aList : list) {
+            if (j < halfSize) {
+                leftSide.add(aList);
                 j++;
-            }else{
-                rightSide.add(list.get(i));
+            } else {
+                rightSide.add(aList);
             }
         }
 

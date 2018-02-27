@@ -1,8 +1,8 @@
 public class CosineExpansion {
-    double expansion(int x, int k){
+    double expansion(double x, int k){
         double ans = 0;
         for(int i = 0; i < k; i++){
-            ans =+ ((Math.pow(-1, k) * Math.pow(x, (2 * k) + 1)) / factorial(2 * k + 1));
+            ans =+ (Math.pow((-1), k) * Math.pow(x, 2*k) / factorial(2*k));
         }
         return ans;
     }

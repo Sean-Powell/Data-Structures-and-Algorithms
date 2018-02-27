@@ -9,6 +9,7 @@ public class run {
     private static HighestInt high = new HighestInt();
     private static FibSequence fib = new FibSequence();
     private static CosineExpansion CE = new CosineExpansion();
+    private static DuplicateNumbers DN = new DuplicateNumbers();
 
     public static void main(String[] args){
         Scanner scan = new Scanner(System.in);
@@ -28,7 +29,7 @@ public class run {
                         System.out.println("Enter the RPN expression to be checked separate each element by a space.");
                         String expression = readString();
                         rpnc.SetInput(expression);
-                        rpnc.validateInput();
+                        System.out.println("The Equation is " + rpnc.validateInput());
                         break;
                     case 3:
                         System.out.println("Enter 1 to check if a number is prime or 2 if you want to run the sieve of Eratosthenes");
@@ -57,6 +58,7 @@ public class run {
                     case 5:
                         break;
                     case 6:
+                        DN.findDuplicates(DN.popList());
                         break;
                     case 7:
                         System.out.println(high.largestInt(high.populateList()));
@@ -64,10 +66,10 @@ public class run {
                     case 8:
                         try {
                             System.out.println("Please enter the value of X in cos(X)");
-                            int x = scan.nextInt();
+                            double x = scan.nextDouble();
                             System.out.println("Please enter the degree you want to calculate the expansion to");
                             int k = scan.nextInt();
-                            System.out.printf("%.2f\n", CE.expansion(x, k));
+                            System.out.printf("%f\n", CE.expansion(x, k));
                         }catch(Exception e){
                             System.out.println("An error has occurred");
                             e.printStackTrace();
@@ -87,23 +89,6 @@ public class run {
                         System.out.println("Invalid input");
                         break;
                 }
-            }
-        }
-        while(true) {
-            try {
-
-                System.out.println("Plese input a number to check");
-                System.out.println(prime.isPrime(scan.nextInt()));
-                prime.sieve();
-                //BT.start();
-                rpnc.SetInput("5 6 * 4 / 12 3 * +");
-                long startTime = System.currentTimeMillis();
-                System.out.println(rpnc.validateInput()); //prints true when valid and false otherwise.
-                long endTime = System.currentTimeMillis();
-                System.out.println("Time taken in milliseconds: " + (endTime - startTime));
-                //System.out.println(3 % 6);
-            } catch (Exception e) {
-                System.out.println("An error occurred");
             }
         }
     }
