@@ -23,4 +23,8 @@ public class Node {
     Node getRightNode(){
         return rightNode;
     }
+
+    int getData(){
+        return data;
+    }
 }

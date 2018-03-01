@@ -3,10 +3,12 @@ import java.util.Comparator;
 
 public class PairMatrix{
     private ArrayList<MultiNumber> LIST = new ArrayList<>();
+    private int pairsFound = 0;
 
     public void start(){
         populateList();
         findPairs();
+        System.out.println("Pairs Found: " + pairsFound);
     }
 
     private void populateList(){
@@ -46,6 +48,7 @@ public class PairMatrix{
                     try{
                         if(LIST.get(lastNumIndex + 1).getProduct() == currentNum){
                             lastNumIndex++;
+                            //i++;
                         }
                     }catch(Exception ignore){
 
@@ -54,12 +57,13 @@ public class PairMatrix{
                     for(int j = firstNumIndex; j <= lastNumIndex; j++){
                         num1 = LIST.get(j);
                         for(int k = firstNumIndex; k <= lastNumIndex; k++){
-                            if(j == k){
+                            if(j == k && (k + 1) > lastNumIndex){
                                 k++;
                             }
                             num2 = LIST.get(k);
-                            if(checkFactors(num1, num2)){
+                            if(checkFactors(num1, num2) && num1.getProduct() == num2.getProduct()){
                                 System.out.println("("+num1.getFactor1()+"*"+num1.getFactor2()+")and("+num2.getFactor1()+"*"+num2.getFactor2()+")");
+                                pairsFound++;
                             }
                         }
                     }
