@@ -3,6 +3,7 @@ import java.io.InputStreamReader;
 import java.util.Scanner;
 
 public class run {
+    private static PairMatrix PM = new PairMatrix();
     private static RPNCalc rpnc = new RPNCalc();
     private static PrimeNumbers prime = new PrimeNumbers();
     private static BinaryTree BT = new BinaryTree();
@@ -24,6 +25,7 @@ public class run {
                         exit = true;
                         break;
                     case 1:
+                        PM.start();
                         break;
                     case 2:
                         System.out.println("Enter the RPN expression to be checked separate each element by a space.");
