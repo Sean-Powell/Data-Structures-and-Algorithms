@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class run {
     private static PairMatrix PM = new PairMatrix();
-    private static RPNCalc rpnc = new RPNCalc();
+    private static RPNCalc RPNC = new RPNCalc();
     private static PrimeNumbers prime = new PrimeNumbers();
     private static BinaryTree BT = new BinaryTree();
     private static HighestInt high = new HighestInt();
@@ -33,8 +33,8 @@ public class run {
                         case 2:
                             System.out.println("Enter the RPN expression to be checked separate each element by a space.");
                             String expression = readString();
-                            rpnc.SetInput(expression);
-                            System.out.println("The Equation is " + rpnc.validateInput());
+                            RPNC.SetInput(expression);
+                            System.out.println("The Equation is " + RPNC.validateInput());
                             break;
                         case 3:
                             System.out.println("Enter 1 to check if a number is prime or 2 if you want to run the sieve of Eratosthenes");
@@ -89,7 +89,6 @@ public class run {
                                 System.out.println("Please enter the degree you want to calculate the expansion to");
                                 int k = scan.nextInt();
                                 System.out.printf("%f\n", CE.expansion(x, k));
-                                System.out.println(CE.factorial(5));
                             } catch (Exception e) {
                                 System.out.println("An error has occurred");
                                 e.printStackTrace();
@@ -98,6 +97,7 @@ public class run {
                             break;
                         case 9:
                             System.out.println("Enter the degree which you want to calculate the fibonacci sequence to ");
+                            System.out.println("After the 103 degree the function will overflow");
                             try {
                                 int n = scan.nextInt();
                                 System.out.println(fib.fibonacci(n));

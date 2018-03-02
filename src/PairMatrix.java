@@ -1,25 +1,29 @@
 import java.util.ArrayList;
 import java.util.Comparator;
 
-public class PairMatrix{
+public class PairMatrix {
     private ArrayList<MultiNumber> LIST = new ArrayList<>();
     private int pairsFound = 0;
 
-    public void start(){
+    public void start() {
+        long start = System.currentTimeMillis();
         populateList();
         findPairs();
         System.out.println("Pairs Found: " + pairsFound);
+        long end = System.currentTimeMillis();
+        System.out.println("Time taken: " + ((end - start) / 1000));
     }
 
-    private void populateList(){
-        for(int i = 0; i < 1024; i++){
-            for(int j = 0; j <= i; j++){
+    private void populateList() {
+        for (int i = 0; i < 1024; i++) {
+            for (int j = 0; j <= i; j++) {
                 MultiNumber num = new MultiNumber((i + 1), (j + 1), ((i + 1) * (j + 1)));
                 LIST.add(num);
             }
         }
     }
-    private boolean checkFactors(MultiNumber num1, MultiNumber num2){
+
+    private boolean checkFactors(MultiNumber num1, MultiNumber num2) {
         int factor1, factor2, factor3, factor4;
 
         factor1 = num1.getFactor1();
@@ -35,34 +39,34 @@ public class PairMatrix{
     //Check for pairs between the 2 found index
     //print pairs
 
-    private void findPairs(){
+    private void findPairs() {
         LIST.sort(Comparator.comparingInt(MultiNumber::getProduct));
         int firstNumIndex, lastNumIndex, currentNum = 0;
         MultiNumber num1, num2;
-        try{
-            int i = 0;
-            while(true){
-                if(LIST.get(i).getProduct() != currentNum){
+        int i = 0;
+        try {
+            while (i < LIST.size()) {
+                if (LIST.get(i).getProduct() != currentNum) {
                     firstNumIndex = i;
                     lastNumIndex = i;
-                    try{
-                        if(LIST.get(lastNumIndex + 1).getProduct() == currentNum){
+                    try {
+                        if (LIST.get(lastNumIndex + 1).getProduct() == currentNum) {
                             lastNumIndex++;
                             //i++;
                         }
-                    }catch(Exception ignore){
+                    } catch (Exception ignore) {
 
                     }
 
-                    for(int j = firstNumIndex; j <= lastNumIndex; j++){
+                    for (int j = firstNumIndex; j <= lastNumIndex; j++) {
                         num1 = LIST.get(j);
-                        for(int k = firstNumIndex; k <= lastNumIndex; k++){
-                            if(j == k && (k + 1) > lastNumIndex){
+                        for (int k = firstNumIndex; k <= lastNumIndex; k++) {
+                            if (j == k && (k + 1) > lastNumIndex) {
                                 k++;
                             }
                             num2 = LIST.get(k);
-                            if(checkFactors(num1, num2) && num1.getProduct() == num2.getProduct()){
-                                System.out.println("("+num1.getFactor1()+"*"+num1.getFactor2()+")and("+num2.getFactor1()+"*"+num2.getFactor2()+")");
+                            if (checkFactors(num1, num2) && num1.getProduct() == num2.getProduct()) {
+                                System.out.println("(" + num1.getFactor1() + "*" + num1.getFactor2() + ")and(" + num2.getFactor1() + "*" + num2.getFactor2() + ")");
                                 pairsFound++;
                             }
                         }
@@ -70,8 +74,8 @@ public class PairMatrix{
                 }
                 i++;
             }
-        }catch (Exception ignored){
-            //Ignore the exception
+        }catch (Exception ignore){
+
         }
     }
 }

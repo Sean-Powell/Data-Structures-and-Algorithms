@@ -1,11 +1,14 @@
 public class FibSequence {
-    int fibonacci(int n){
-        if(n == 0){
-            return 0;
-        }else if(n == 1){
-            return 1;
-        }else{
-            return fibonacci(n - 1) + fibonacci(n - 2);
+    //after n > 103 the long with have an overflow
+    long fibonacci(int n){
+        long oldFib = 1;
+        long fibValue = 1;
+        long x; //temp int for holding the old value of fib
+        for(int i = 2; i < n; i++){
+            x = fibValue;
+            fibValue += oldFib;
+            oldFib = x;
         }
+        return fibValue;
     }
 }
