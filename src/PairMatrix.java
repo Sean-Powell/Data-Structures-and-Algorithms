@@ -1,11 +1,11 @@
 import java.util.ArrayList;
 import java.util.Comparator;
 
-public class PairMatrix {
+class PairMatrix {
     private ArrayList<MultiNumber> LIST = new ArrayList<>();
     private int pairsFound = 0;
 
-    public void start() {
+    void start() {
         long start = System.currentTimeMillis();
         populateList();
         findPairs();
@@ -52,12 +52,10 @@ public class PairMatrix {
                     try {
                         if (LIST.get(lastNumIndex + 1).getProduct() == currentNum) {
                             lastNumIndex++;
-                            //i++;
                         }
                     } catch (Exception ignore) {
 
                     }
-
                     for (int j = firstNumIndex; j <= lastNumIndex; j++) {
                         num1 = LIST.get(j);
                         for (int k = firstNumIndex; k <= lastNumIndex; k++) {

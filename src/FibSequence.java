@@ -4,7 +4,7 @@ public class FibSequence {
         long oldFib = 1;
         long fibValue = 1;
         long x; //temp int for holding the old value of fib
-        for(int i = 2; i < n; i++){
+        for(int i = 0; i < (n - 2); i++){
             x = fibValue;
             fibValue += oldFib;
             oldFib = x;

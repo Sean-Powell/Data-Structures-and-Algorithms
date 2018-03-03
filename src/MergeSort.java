@@ -2,8 +2,8 @@ import com.sun.istack.internal.NotNull;
 
 import java.util.ArrayList;
 
-public class MergeSort {
-    public ArrayList<Integer> mergeSort(@NotNull ArrayList<Integer> list){
+class MergeSort {
+    ArrayList<Integer> mergeSort(@NotNull ArrayList<Integer> list){
         if(list.size() <= 1){
             return list;
         }

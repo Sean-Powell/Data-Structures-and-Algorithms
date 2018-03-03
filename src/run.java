@@ -25,6 +25,7 @@ public class run {
                 if (selected >= 1 && selected <= 9 || selected == -1) {
                     switch (selected) {
                         case -1:
+                            System.out.println("Quitting");
                             exit = true;
                             break;
                         case 1:
@@ -113,6 +114,7 @@ public class run {
                     }
                 }
             }catch (Exception e){
+                e.printStackTrace();
                 System.out.println("Invalid input");
                 resetScanner();
             }

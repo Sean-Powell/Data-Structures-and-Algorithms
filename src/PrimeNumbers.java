@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class PrimeNumbers {
+class PrimeNumbers {
     private int[] additionAmount = {1, 2, 1};
     private int j;
     private int addAmount(){

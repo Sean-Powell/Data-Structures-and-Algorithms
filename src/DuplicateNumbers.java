@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class DuplicateNumbers {
+class DuplicateNumbers {
     private Scanner scan = new Scanner(System.in);
     void findDuplicates(ArrayList<Integer> list){
         ArrayList<Integer> uniqueNumbers = new ArrayList<>();

@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class HighestInt {
+class HighestInt {
     ArrayList<Integer> populateList(){
         ArrayList<Integer> list = new ArrayList<>();
         Scanner scan = new Scanner(System.in);

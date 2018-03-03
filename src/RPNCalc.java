@@ -1,14 +1,14 @@
 import java.util.Stack;
 
-public class RPNCalc {
-    private String input;//inputs are seperated via spaces
+class RPNCalc {
+    private String input;//inputs are separated via spaces
     private Stack<Double> stack = new Stack<>();
 
-    public void SetInput(String newInput) {
+    void SetInput(String newInput) {
         input = newInput;
     }
 
-    public boolean validateInput(){
+    boolean validateInput(){
         String[] splitInput = input.split(" ");
         try {
             for (String aSplitInput : splitInput) {
