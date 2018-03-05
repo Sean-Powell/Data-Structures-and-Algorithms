@@ -3,15 +3,15 @@ import com.sun.istack.internal.NotNull;
 import java.util.ArrayList;
 
 class MergeSort {
-    ArrayList<Integer> mergeSort(@NotNull ArrayList<Integer> list){
-        if(list.size() <= 1){
-            return list;
+    ArrayList<MultiNumber> mergeSort(@NotNull ArrayList<MultiNumber> _list){
+        if(_list.size() <= 1){
+            return _list;
         }
-        int halfSize = (int) Math.ceil(list.size() / 2);
-        ArrayList<Integer> leftSide = new ArrayList<>();
-        ArrayList<Integer> rightSide = new ArrayList<>();
+        int halfSize = (int) Math.ceil(_list.size() / 2);
+        ArrayList<MultiNumber> leftSide = new ArrayList<>();
+        ArrayList<MultiNumber> rightSide = new ArrayList<>();
         int j = 0;
-        for (Integer aList : list) {
+        for (MultiNumber aList : _list) {
             if (j < halfSize) {
                 leftSide.add(aList);
                 j++;
@@ -26,26 +26,26 @@ class MergeSort {
         return mergeLists(leftSide, rightSide);
     }
 
-    private ArrayList<Integer> mergeLists(@NotNull ArrayList<Integer> list1, @NotNull ArrayList<Integer> list2){
-        ArrayList<Integer> result = new ArrayList<>();
-        while(!list1.isEmpty() && !list2.isEmpty()){
-            if(list1.get(0) < list2.get(0)){
-                result.add(list1.get(0));
-                list1.remove(0);
+    private ArrayList<MultiNumber> mergeLists(@NotNull ArrayList<MultiNumber> _list1, @NotNull ArrayList<MultiNumber> _list2){
+        ArrayList<MultiNumber> result = new ArrayList<>();
+        while(!_list1.isEmpty() && !_list2.isEmpty()){
+            if(_list1.get(0).getProduct() < _list2.get(0).getProduct()){
+                result.add(_list1.get(0));
+                _list1.remove(0);
             }else{
-                result.add(list2.get(0));
-                list2.remove(0);
+                result.add(_list2.get(0));
+                _list2.remove(0);
             }
         }
 
-        while(!list1.isEmpty()){
-            result.add(list1.get(0));
-            list1.remove(0);
+        while(!_list1.isEmpty()){
+            result.add(_list1.get(0));
+            _list1.remove(0);
         }
 
-        while(!list2.isEmpty()){
-            result.add(list2.get(0));
-            list2.remove(0);
+        while(!_list2.isEmpty()){
+            result.add(_list2.get(0));
+            _list2.remove(0);
         }
         return result;
     }

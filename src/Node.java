@@ -8,12 +8,12 @@ class Node {
         leftNode = _leftNode;
     }
 
-    void setLeftNode(Node node){
-        leftNode = node;
+    void setLeftNode(Node _node){
+        leftNode = _node;
     }
 
-    void setRightNode(Node node){
-        rightNode = node;
+    void setRightNode(Node _node){
+        rightNode = _node;
     }
 
     Node getLeftNode(){

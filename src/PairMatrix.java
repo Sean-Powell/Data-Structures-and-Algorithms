@@ -1,11 +1,13 @@
 import java.util.ArrayList;
-import java.util.Comparator;
 
 class PairMatrix {
-    private ArrayList<MultiNumber> LIST = new ArrayList<>();
-    private int pairsFound = 0;
+    private ArrayList<MultiNumber> LIST;
+    private MergeSort MS = new MergeSort();
+    private int pairsFound;
 
     void start() {
+        pairsFound = 0;
+        LIST = new ArrayList<>();
         long start = System.currentTimeMillis();
         populateList();
         findPairs();
@@ -23,13 +25,13 @@ class PairMatrix {
         }
     }
 
-    private boolean checkFactors(MultiNumber num1, MultiNumber num2) {
+    private boolean checkFactors(MultiNumber _num1, MultiNumber _num2) {
         int factor1, factor2, factor3, factor4;
 
-        factor1 = num1.getFactor1();
-        factor2 = num1.getFactor2();
-        factor3 = num2.getFactor1();
-        factor4 = num2.getFactor2();
+        factor1 = _num1.getFactor1();
+        factor2 = _num1.getFactor2();
+        factor3 = _num2.getFactor1();
+        factor4 = _num2.getFactor2();
 
         return factor1 != factor2 && factor1 != factor3 && factor1 != factor4 && factor2 != factor3 && factor2 != factor4 && factor3 != factor4;
     }
@@ -40,7 +42,7 @@ class PairMatrix {
     //print pairs
 
     private void findPairs() {
-        LIST.sort(Comparator.comparingInt(MultiNumber::getProduct));
+        LIST = MS.mergeSort(LIST);
         int firstNumIndex, lastNumIndex, currentNum = 0;
         MultiNumber num1, num2;
         int i = 0;

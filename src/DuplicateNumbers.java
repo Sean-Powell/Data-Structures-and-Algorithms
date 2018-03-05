@@ -3,11 +3,11 @@ import java.util.Scanner;
 
 class DuplicateNumbers {
     private Scanner scan = new Scanner(System.in);
-    void findDuplicates(ArrayList<Integer> list){
+    void findDuplicates(ArrayList<Integer> _list){
         ArrayList<Integer> uniqueNumbers = new ArrayList<>();
         ArrayList<Integer> duplicateNumbers = new ArrayList<>();
         boolean found;
-        for (Integer aList : list) {
+        for (Integer aList : _list) {
             int x = aList;
             found = false;
             if (!uniqueNumbers.isEmpty()) {

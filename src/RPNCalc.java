@@ -4,8 +4,8 @@ class RPNCalc {
     private String input;//inputs are separated via spaces
     private Stack<Double> stack = new Stack<>();
 
-    void SetInput(String newInput) {
-        input = newInput;
+    void SetInput(String _newInput) {
+        input = _newInput;
     }
 
     boolean validateInput(){

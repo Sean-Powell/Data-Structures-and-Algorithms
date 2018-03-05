@@ -11,11 +11,11 @@ class PrimeNumbers {
         }
         return x;
     }
-    Boolean isPrime(int x) {
+    Boolean isPrime(int _x) {
         j = 0;
-        int sqr = (int) Math.ceil(Math.sqrt(x));
+        int sqr = (int) Math.ceil(Math.sqrt(_x));
         for (int i = 2; i <= sqr; i++) {
-            if (x % i == 0) {
+            if (_x % i == 0) {
                 return false;
             }
             if (i >= 11) {

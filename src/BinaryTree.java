@@ -25,42 +25,42 @@ class BinaryTree {
         }
     }
 
-    private void addLeftNode(Node oldNode, int data){
-        if(oldNode.getLeftNode() != null){
-            Node leftNode = oldNode.getLeftNode();
-            if(data >= leftNode.getData()){
-                addRightNode(leftNode, data);
+    private void addLeftNode(Node _oldNode, int _data){
+        if(_oldNode.getLeftNode() != null){
+            Node leftNode = _oldNode.getLeftNode();
+            if(_data >= leftNode.getData()){
+                addRightNode(leftNode, _data);
             }else{
-                addLeftNode(leftNode, data);
+                addLeftNode(leftNode, _data);
             }
         }else{
-            oldNode.setLeftNode(new Node(data, null, null));
+            _oldNode.setLeftNode(new Node(_data, null, null));
         }
     }
 
-    private void addRightNode(Node oldNode, int data){
-        if(oldNode.getRightNode() != null){
-            Node rightNode = oldNode.getRightNode();
-            if(data >= rightNode.getData()){
-                addRightNode(rightNode, data);
+    private void addRightNode(Node _oldNode, int _data){
+        if(_oldNode.getRightNode() != null){
+            Node rightNode = _oldNode.getRightNode();
+            if(_data >= rightNode.getData()){
+                addRightNode(rightNode, _data);
             }else{
-                addLeftNode(rightNode, data);
+                addLeftNode(rightNode, _data);
             }
         }else{
-            oldNode.setRightNode(new Node(data, null, null));
+            _oldNode.setRightNode(new Node(_data, null, null));
         }
     }
 
-    private void makeTree(ArrayList<Integer> list){
+    private void makeTree(ArrayList<Integer> _list){
         int value;
-        int mid = list.size() / 2;
+        int mid = _list.size() / 2;
 
-        value = list.get(mid);
-        list.remove(mid);
+        value = _list.get(mid);
+        _list.remove(mid);
 
         Node rootNode = new Node(value, null, null);
 
-        for (Integer aList : list) {
+        for (Integer aList : _list) {
             value = aList;
             if (value >= rootNode.getData()) { //go to the right branch
                 addRightNode(rootNode, value);

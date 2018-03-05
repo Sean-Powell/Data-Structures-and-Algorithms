@@ -15,13 +15,13 @@ class HighestInt {
         }
     }
 
-    int largestInt(ArrayList<Integer> list){
-        if(list.size() == 1){
-            return list.get(0);
+    int largestInt(ArrayList<Integer> _list){
+        if(_list.size() == 1){
+            return _list.get(0);
         }else{
-            int num1 = list.get(0);
-            list.remove(0);
-            int num2 = largestInt(list);
+            int num1 = _list.get(0);
+            _list.remove(0);
+            int num2 = largestInt(_list);
             if(num1 > num2){
                 return num1;
             }else{
