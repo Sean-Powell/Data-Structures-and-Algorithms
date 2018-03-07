@@ -5,6 +5,7 @@ class RPNCalc {
     private Stack<Double> stack = new Stack<>();
 
     void SetInput(String _newInput) {
+        assert _newInput != null;
         input = _newInput;
     }
 

@@ -12,7 +12,6 @@ class BinaryTree {
         }
     }
 
-
     private void getUserInputs(){
         System.out.println("Enter anything other than a number to stop entering numbers");
         while(true){
