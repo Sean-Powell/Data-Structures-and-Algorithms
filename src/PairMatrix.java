@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Comparator;
 
 class PairMatrix {
     private ArrayList<MultiNumber> LIST;
@@ -94,7 +95,7 @@ class PairMatrix {
                     the console.
                      */
                     for (int j = firstNumIndex; j <= lastNumIndex; j++) {
-                        num1 = LIST.get(j);
+                        num1 = LIST.get(j);//The number is stored here to reduce access requests to the list
                         for (int k = firstNumIndex; k <= lastNumIndex; k++) {
                             if (j == k && (k + 1) > lastNumIndex) {
                                 k++;

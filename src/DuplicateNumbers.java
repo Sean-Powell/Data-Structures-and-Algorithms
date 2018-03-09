@@ -3,6 +3,10 @@ import java.util.Scanner;
 
 class DuplicateNumbers {
     private Scanner scan = new Scanner(System.in);
+
+    /*
+
+     */
     void findDuplicates(ArrayList<Integer> _list){
         ArrayList<Integer> uniqueNumbers = new ArrayList<>();
         ArrayList<Integer> duplicateNumbers = new ArrayList<>();
@@ -28,6 +32,10 @@ class DuplicateNumbers {
         System.out.println("Duplicate numbers: " + duplicateNumbers.toString());
     }
 
+    /*
+     This method prompts the user to enter numbers to populate the list of numbers that will be checked for unique numbers
+     this will once again loop until the user enters a input that is not a number.
+     */
     ArrayList<Integer> popList(){
         ArrayList<Integer> list = new ArrayList<>();
         while (true){

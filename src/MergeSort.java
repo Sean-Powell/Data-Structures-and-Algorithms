@@ -1,20 +1,24 @@
-import com.sun.istack.internal.NotNull;
-
 import java.util.ArrayList;
 
+/*
+This is a merge sort implementation that is made to sort through the products in the MultiNumber arrays that are passed
+to it.
+ */
 class MergeSort {
-    ArrayList<MultiNumber> mergeSort(@NotNull ArrayList<MultiNumber> _list){
+    ArrayList<MultiNumber> mergeSort(ArrayList<MultiNumber> _list){
+        assert  _list != null;
+
         if(_list.size() <= 1){
             return _list;
         }
         int halfSize = (int) Math.ceil(_list.size() / 2);
         ArrayList<MultiNumber> leftSide = new ArrayList<>();
         ArrayList<MultiNumber> rightSide = new ArrayList<>();
-        int j = 0;
+        int currentNumIndex = 0;
         for (MultiNumber aList : _list) {
-            if (j < halfSize) {
+            if (currentNumIndex < halfSize) {
                 leftSide.add(aList);
-                j++;
+                currentNumIndex++;
             } else {
                 rightSide.add(aList);
             }
@@ -26,14 +30,18 @@ class MergeSort {
         return mergeLists(leftSide, rightSide);
     }
 
-    private ArrayList<MultiNumber> mergeLists(@NotNull ArrayList<MultiNumber> _list1, @NotNull ArrayList<MultiNumber> _list2){
+    private ArrayList<MultiNumber> mergeLists(ArrayList<MultiNumber> _list1, ArrayList<MultiNumber> _list2){
+        assert _list1 != null && _list2 != null;
+
         ArrayList<MultiNumber> result = new ArrayList<>();
         while(!_list1.isEmpty() && !_list2.isEmpty()){
-            if(_list1.get(0).getProduct() < _list2.get(0).getProduct()){
-                result.add(_list1.get(0));
+            MultiNumber num1 = _list1.get(0);
+            MultiNumber num2 = _list2.get(0);
+            if(num1.getProduct() < num2.getProduct()){
+                result.add(num1);
                 _list1.remove(0);
             }else{
-                result.add(_list2.get(0));
+                result.add(num2);
                 _list2.remove(0);
             }
         }

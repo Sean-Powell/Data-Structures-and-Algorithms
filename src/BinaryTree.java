@@ -1,6 +1,10 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/*
+Rewrite this class, so that when a number is inputted it is instantly added to the tree. Also add a search function of
+the tree
+ */
 class BinaryTree {
     private ArrayList<Integer> listOfInts = new ArrayList<>();
     private Scanner scan = new Scanner(System.in);
