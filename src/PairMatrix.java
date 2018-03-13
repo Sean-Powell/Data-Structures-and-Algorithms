@@ -30,6 +30,7 @@ class PairMatrix {
          On line n after the nth element in that line the products are then repeated. We can use this fact to reduce
          the number of products to be checked from 1024^2 to the summation of 1 to 1024
          */
+
         for (int i = 0; i < LIST_SIZE; i++) {
             for (int j = 0; j <= i; j++) {
                 MultiNumber num = new MultiNumber((i + 1), (j + 1), ((i + 1) * (j + 1)));

@@ -6,7 +6,7 @@ to it.
  */
 class MergeSort {
     ArrayList<MultiNumber> mergeSort(ArrayList<MultiNumber> _list){
-        assert  _list != null;
+        //assert  _list != null;
 
         if(_list.size() <= 1){
             return _list;
@@ -31,17 +31,17 @@ class MergeSort {
     }
 
     private ArrayList<MultiNumber> mergeLists(ArrayList<MultiNumber> _list1, ArrayList<MultiNumber> _list2){
-        assert _list1 != null && _list2 != null;
+        //assert _list1 != null && _list2 != null;
 
         ArrayList<MultiNumber> result = new ArrayList<>();
         while(!_list1.isEmpty() && !_list2.isEmpty()){
-            MultiNumber num1 = _list1.get(0);
-            MultiNumber num2 = _list2.get(0);
-            if(num1.getProduct() < num2.getProduct()){
-                result.add(num1);
+            //MultiNumber num1 = _list1.get(0);
+            //MultiNumber num2 = _list2.get(0);
+            if(_list1.get(0).getProduct() < _list2.get(0).getProduct()){
+                result.add(_list1.get(0));
                 _list1.remove(0);
             }else{
-                result.add(num2);
+                result.add(_list2.get(0));
                 _list2.remove(0);
             }
         }

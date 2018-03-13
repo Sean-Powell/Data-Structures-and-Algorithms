@@ -49,7 +49,7 @@ class RPNCalc {
                     case "/":
                         secondNum = stack.pop();
                         firstNum = stack.pop();
-                        System.out.println("Subtraction:");
+                        System.out.println("Division:");
                         stack.push(firstNum / secondNum);
                         System.out.println(stack.toString());
                         break;

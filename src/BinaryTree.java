@@ -1,32 +1,65 @@
-import java.util.ArrayList;
 import java.util.Scanner;
 
-/*
-Rewrite this class, so that when a number is inputted it is instantly added to the tree. Also add a search function of
-the tree
- */
 class BinaryTree {
-    private ArrayList<Integer> listOfInts = new ArrayList<>();
     private Scanner scan = new Scanner(System.in);
 
-    void start(){
-        getUserInputs();
-        if(listOfInts.size() != 0){
-            makeTree(listOfInts);
-        }
-    }
+    private boolean firstNode = true;
+    private Node rootNode = null;
 
-    private void getUserInputs(){
-        System.out.println("Enter anything other than a number to stop entering numbers");
-        while(true){
-            try{
-                System.out.println("Enter an integer: ");
-                listOfInts.add(scan.nextInt());
-            }catch(Exception e){
-                break;
+    void start() {
+        boolean run = true;
+        while (run) {
+            try {
+                System.out.println("Enter 1 to add to the tree, Enter 2 to find if a number is in the tree. -1 to quit");
+                int input = scan.nextInt();
+                switch (input) {
+                    case 1:
+                        System.out.println("Enter anything other than a number to stop entering numbers");
+                        while (true) {
+                            try {
+                                System.out.println("Enter an integer: ");
+                                addNode(scan.nextInt());
+                            } catch (Exception e) {
+                                break;
+                            }
+                        }
+                        break;
+                    case 2:
+                        System.out.println("Enter the number you wish to find in the list");
+                        input = scan.nextInt();
+                        if(findNode(input, rootNode)){
+                            System.out.println("There is a node in the tree with that data");
+                        }else{
+                            System.out.println("A node with that data could not be found in the tree");
+                        }
+                        break;
+                    case -1:
+                        run = false;
+                        break;
+                    default:
+                        System.out.println("invalid input");
+                }
+            } catch (Exception ignore) {
+                scan = null;
+                scan = new Scanner(System.in);
             }
         }
     }
+
+    private boolean findNode(int _input, Node _nodeBeingChecked){
+        if(_nodeBeingChecked == null){
+            return false;
+        }else if(_input == _nodeBeingChecked.getData()){
+           return true;
+        }else{
+            if(_nodeBeingChecked.getData() >= _input) {
+                return _nodeBeingChecked.getRightNode() != null && findNode(_input, _nodeBeingChecked.getRightNode());
+            }else{
+                return _nodeBeingChecked.getLeftNode() != null && findNode(_input, _nodeBeingChecked.getLeftNode());
+            }
+        }
+    }
+
 
     private void addLeftNode(Node _oldNode, int _data){
         if(_oldNode.getLeftNode() != null){
@@ -54,24 +87,16 @@ class BinaryTree {
         }
     }
 
-    private void makeTree(ArrayList<Integer> _list){
-        int value;
-        int mid = _list.size() / 2;
-
-        value = _list.get(mid);
-        _list.remove(mid);
-
-        Node rootNode = new Node(value, null, null);
-
-        for (Integer aList : _list) {
-            value = aList;
-            if (value >= rootNode.getData()) { //go to the right branch
-                addRightNode(rootNode, value);
-            } else {
-                addLeftNode(rootNode, value);
+    private void addNode(int _input){
+        if(firstNode){
+            firstNode = false;
+            rootNode = new Node(_input, null, null);
+        }else{
+            if(_input >= rootNode.getData()){
+                addRightNode(rootNode, _input);
+            }else{
+                addLeftNode(rootNode, _input);
             }
         }
-
-        System.out.println("Tree made");
     }
 }

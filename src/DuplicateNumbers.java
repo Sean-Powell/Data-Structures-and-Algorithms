@@ -5,7 +5,7 @@ class DuplicateNumbers {
     private Scanner scan = new Scanner(System.in);
 
     /*
-
+    This methods goes though a list
      */
     void findDuplicates(ArrayList<Integer> _list){
         ArrayList<Integer> uniqueNumbers = new ArrayList<>();
