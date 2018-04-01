@@ -5,11 +5,9 @@ class BabMethod {
      */
     double approximate(int _number, int _iterations){
         double ans = _number / 2;//first guess
-
         for(int i = 0; i < _iterations; i++){ //runs for how many iterations the user requested
             ans = (ans + (_number / ans)) * 0.5;
         }
-
         return ans;//returns the answer
     }
 }

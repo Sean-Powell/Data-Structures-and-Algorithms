@@ -1,35 +1,42 @@
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 class DuplicateNumbers {
     private Scanner scan = new Scanner(System.in);
 
     /*
-    This methods goes though a list
+    Change this method to use a hashing function to see if numbers appear multiple times in the list.
      */
-    void findDuplicates(ArrayList<Integer> _list){
-        ArrayList<Integer> uniqueNumbers = new ArrayList<>();
+
+    void findDuplicatesHash(ArrayList<Integer> _list){
+        ArrayList<byte[]> hashList = new ArrayList<>();
         ArrayList<Integer> duplicateNumbers = new ArrayList<>();
-        boolean found;
-        for (Integer aList : _list) {
-            int x = aList;
-            found = false;
-            if (!uniqueNumbers.isEmpty()) {
-                for (int j = 0; j < uniqueNumbers.size(); j++) {
-                    if (x == uniqueNumbers.get(j)) {
+        try{
+            MessageDigest messageDigest = MessageDigest.getInstance("SHA-256");
+            boolean found;
+            for (Integer a_list : _list) {
+                byte[] hash = messageDigest.digest(a_list.toString().getBytes(StandardCharsets.UTF_8));
+                found = false;
+                for (byte[] aHashList : hashList) {
+                    if (Arrays.equals(hash, aHashList)) {
                         found = true;
-                        duplicateNumbers.add(uniqueNumbers.get(j));
-                        uniqueNumbers.remove(j);
                     }
                 }
+                if (found) {
+                    duplicateNumbers.add(a_list);
+                } else {
+                    hashList.add(hash);
+                }
             }
-
-            if (!found) {
-                uniqueNumbers.add(x);
-            }
+            System.out.println(duplicateNumbers.toString());
+        }catch(NoSuchAlgorithmException e){
+            e.printStackTrace();
         }
 
-        System.out.println("Duplicate numbers: " + duplicateNumbers.toString());
     }
 
     /*

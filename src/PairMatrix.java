@@ -6,20 +6,20 @@ class PairMatrix {
     private MergeSort MS = new MergeSort();//creates an instance of the Mergesort class
     private int pairsFound;//Counter for holding the number of pairs found
 
-    private final int LIST_SIZE = 1024; //stores the size of the list
 
     void start() {
+        final int listSize = 1024; //stores the size of the list
         pairsFound = 0;//Sets the pairsFound counter to 0
         LIST = new ArrayList<>();//creates the list that will be populated with the total list of products and factors
         long start = System.currentTimeMillis();//gets the time the operation starts
-        populateList();//creates the list of products and factors and stores them in the above list
+        populateList(listSize);//creates the list of products and factors and stores them in the above list
         findPairs();//finds the pairs of numbers and outputs them.
         System.out.println("Pairs Found: " + pairsFound); //outputs the number of pairs found
         long end = System.currentTimeMillis(); //finds the time the operation ended at
         System.out.printf("Time taken: %d\n", ((end - start) / 1000)); //outputs the time it took in seconds to finish
     }
 
-    private void populateList() {
+    private void populateList(int _listSize) {
         /*
          1
          1 2
@@ -31,8 +31,8 @@ class PairMatrix {
          the number of products to be checked from 1024^2 to the summation of 1 to 1024
          */
 
-        for (int i = 0; i < LIST_SIZE; i++) {
-            for (int j = 0; j <= i; j++) {
+        for (int i = 0; i < _listSize; i++) {
+            for (int j = 0; j <= (i - 1); j++) {
                 MultiNumber num = new MultiNumber((i + 1), (j + 1), ((i + 1) * (j + 1)));
                 LIST.add(num);
             }
@@ -48,7 +48,8 @@ class PairMatrix {
         factor4 = _num2.getFactor2();
 
         //compares all the factors to make sure none of them match
-        return factor1 != factor2 && factor1 != factor3 && factor1 != factor4 && factor2 != factor3 && factor2 != factor4 && factor3 != factor4;
+        return factor1 != factor2 && factor1 != factor3 && factor1 != factor4 && factor2 != factor3 &&
+                factor2 != factor4 && factor3 != factor4;
     }
 
     //find first num of same num
@@ -69,7 +70,8 @@ class PairMatrix {
         MultiNumber num1, num2;// variables for holding the two MultiNumber objects being compared to reduce ArrayList calls.
         int i = 0;
         try {//it is surrounded by a try catch block to catch any potential errors that can occur during the logic the
-             //exception is then ignored.
+            //exception is then ignored.
+
             while (i < LIST.size()) {//loop through till the end of the list
                 /*
                 checks if the currents numbers product is different from the one stored in currentNum
@@ -97,13 +99,17 @@ class PairMatrix {
                      */
                     for (int j = firstNumIndex; j <= lastNumIndex; j++) {
                         num1 = LIST.get(j);//The number is stored here to reduce access requests to the list
-                        for (int k = firstNumIndex; k <= lastNumIndex; k++) {
+                        //the (-1 * (firstNumIndex - j)) is for increasing the starting index so previous comparisons are
+                        //not made again
+                        for (int k = firstNumIndex + (-1 * (firstNumIndex - j)); k <= lastNumIndex; k++) {
                             if (j == k && (k + 1) > lastNumIndex) {
                                 k++;
                             }
                             num2 = LIST.get(k);
                             if (checkFactors(num1, num2) && num1.getProduct() == num2.getProduct()) {
-                                System.out.println("(" + num1.getFactor1() + "*" + num1.getFactor2() + ")and(" + num2.getFactor1() + "*" + num2.getFactor2() + ")" + " = " + num1.getProduct());
+                                System.out.println("(" + num1.getFactor1() + "*" + num1.getFactor2() + ")and(" +
+                                        num2.getFactor1() + "*" + num2.getFactor2() + ")" + " = " +
+                                        num1.getProduct());
                                 pairsFound++;
                             }
                         }
@@ -112,7 +118,7 @@ class PairMatrix {
                 i = lastNumIndex;//This sets i to the lastNumIndex, so as not to recheck part of a number block
                 i++;//i is then incremented.
             }
-        }catch (Exception ignore){
+        } catch (Exception ignore) {
 
         }
     }

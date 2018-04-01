@@ -52,7 +52,7 @@ class PrimeNumbers {
         of any number in the list. If it is a factor then the the number that it is a factor of it removed. After it has
         gone through all the number less than the square root it then prints the list with 4 numbers on every line.
         This printing is in a try catch block so that if there is not 4 numbers in the list left to be printed it won't crash
-        and will only print the amount that is left and will create a new line at the end
+        and will only print the amount that is left and will create a new line at the end.
          */
         int n;
         j = 0;
