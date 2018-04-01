@@ -1,6 +1,5 @@
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class run {
@@ -42,11 +41,13 @@ public class run {
                          */
                         System.out.println("Enter the RPN expression to be checked separate each element by a space.");
                         String expression = readString();
-                        RPNC.SetInput(expression);
-                        if (RPNC.validateInput()) {
-                            System.out.println("The Equation is valid");
-                        } else {
-                            System.out.println("The Equation is invalid");
+                        if(expression != null) {
+                            RPNC.SetInput(expression);
+                            if (RPNC.validateInput()) {
+                                System.out.println("The Equation is valid");
+                            } else {
+                                System.out.println("The Equation is invalid");
+                            }
                         }
                         break;
                     case 3://This is for running question 3

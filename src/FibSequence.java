@@ -1,6 +1,6 @@
 import java.math.BigInteger;
 
-public class FibSequence {
+class FibSequence {
     /*
      The method iteratively loops through calculating the fibonacci sequence up to the degree that the user desires.
      */
@@ -14,7 +14,6 @@ public class FibSequence {
             fibValue = fibValue.add(oldFib);
             oldFib = temp;
         }
-
         return fibValue;
     }
 }

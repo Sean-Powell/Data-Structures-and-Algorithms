@@ -1,23 +1,23 @@
-public class Expansion {
-    double cosExpansion(double _x, int _y){
+class Expansion {
+    double cosExpansion(double _radians, int _degrees){
         double ans = 0;
-        for(int i = 0; i < _y; i++){
+        for(int i = 0; i < _degrees; i++){
             if(i == 0){
                 ans = 1;
             }else {
-                ans += (Math.pow(-1, i) * Math.pow(_x, 2 * i)) / factIt(2 * i);
+                ans += (Math.pow(-1, i) * Math.pow(_radians, 2 * i)) / factIt(2 * i);
             }
         }
         return ans;
     }
 
-    double sinExpansion(double _x, int _y){
+    double sinExpansion(double _radians, int _degrees){
         double ans = 0;
-        for(int i = 0; i < _y; i++){
+        for(int i = 0; i < _degrees; i++){
             if(i == 0){
-                ans = _x;
+                ans = _radians;
             }else{
-                ans += (Math.pow(-1, i) * Math.pow(_x, (2 * i) + 1) / factIt((2 * i) + 1));
+                ans += (Math.pow(-1, i) * Math.pow(_radians, (2 * i) + 1) / factIt((2 * i) + 1));
             }
         }
         return ans;

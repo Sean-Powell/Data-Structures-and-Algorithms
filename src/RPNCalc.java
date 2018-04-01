@@ -9,7 +9,6 @@ class RPNCalc {
         Sets the input that the user inputted to the calculator, also checks if the input has been set to null as the
         method that gets the user input can pass null to this function if an error occurs.
          */
-        assert _newInput != null;
         input = _newInput;
     }
 
