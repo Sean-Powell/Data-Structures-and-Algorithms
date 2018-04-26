@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="DSaA">
+    <output-path>$PROJECT_DIR$/out/artifacts/DSaA</output-path>
+    <root id="archive" name="DataStructureAndAlgorithmsAssignment.jar">
+      <element id="module-output" name="DataStructureAndAlgorithmsAssignment" />
+    </root>
+  </artifact>
+</component>
