@@ -50,6 +50,8 @@ class DuplicateNumbers {
                 System.out.println("Enter a number to add to the list, enter any thing other than a number to stop");
                 list.add(scan.nextInt());
             }catch(Exception e){
+                scan = null;
+                scan = new Scanner(System.in);
                 return list;
             }
         }
